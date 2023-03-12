@@ -10,6 +10,12 @@ const Button = (props) => (
   </button>
 )
 
+const Statistics = (props) => (
+  <div>
+    {props.value[0] * 100 / (props.value[0] + props.value[1] + props.value[2]) + '%'}
+  </div>
+)
+
 const App = () => {
   const feedback = "give feedback"
   const statistics = "statistics"
@@ -31,7 +37,7 @@ const App = () => {
       <Display value={bad} text='bad'/>
       <Display value={good + neutral + bad} text='all' />
       <Display value={(good - bad) / (good + neutral + bad)} text='average' />
-      <Display value={good * 100 / (good + neutral + bad) + '%'} text='positive'/>
+      <Statistics value={[good, neutral, bad]} text='positive' />
     </div>
   )
 }
