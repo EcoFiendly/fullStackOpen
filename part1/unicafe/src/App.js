@@ -17,14 +17,16 @@ const Statistics = (props) => {
     )
   } else {
     return (
-      <div>
-        <StatisticLine value={props.value[0]} text='good'/>
-        <StatisticLine value={props.value[1]} text='neutral'/>
-        <StatisticLine value={props.value[2]} text='bad'/>
-        <StatisticLine value={props.value[0] + props.value[1] + props.value[2]} text='all' />
-        <StatisticLine value={(props.value[0] - props.value[2]) / (props.value[0] + props.value[1] + props.value[2])} text='average' />
-        <StatisticLine value={props.value[0] * 100 / (props.value[0] + props.value[1] + props.value[2]) + '%'} text='positive' />
-      </div>
+      <table>
+        <tbody>
+          <tr><td><StatisticLine value={props.value[0]} text='good'/></td></tr>
+          <tr><td><StatisticLine value={props.value[1]} text='neutral'/></td></tr>
+          <tr><td><StatisticLine value={props.value[2]} text='bad'/></td></tr>
+          <tr><td><StatisticLine value={props.value[0] + props.value[1] + props.value[2]} text='all' /></td></tr>
+          <tr><td><StatisticLine value={(props.value[0] - props.value[2]) / (props.value[0] + props.value[1] + props.value[2])} text='average' /></td></tr>
+          <tr><td><StatisticLine value={props.value[0] * 100 / (props.value[0] + props.value[1] + props.value[2]) + '%'} text='positive' /></td></tr>
+        </tbody>
+      </table>
     )
    }
 }
