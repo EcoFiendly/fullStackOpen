@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+const Header = (props) => <div><h1>{props.text}</h1></div>
+
 const Text = (props) => <div>{props.text}</div>
 
 const Vote = (props) => {
@@ -35,13 +37,23 @@ const App = () => {
     copy[selected]++
     setVotes(copy)
   }
+
+  const mostVotes = () => {
+    const indexMaxVotes = votes.indexOf(Math.max(...votes))
+    console.log(indexMaxVotes)
+    return indexMaxVotes
+  }
   
   return (
     <div>
+      <Header text={'Anecdote of the day'} />
       <Text text={anecdotes[selected]} />
       <Vote vote={votes[selected]} />
       <Button handleClick={setCopy} text='Vote'/>
       <Button handleClick={() => setSelected(Math.floor(Math.random()*anecdotes.length))} text='next anecdote' />
+      <Header text={'Anecdote with most votes'} />
+      <Text text={anecdotes[mostVotes()]} />
+      <Vote vote={votes[mostVotes()]} />
     </div>
   )
 }
