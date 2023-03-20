@@ -18,7 +18,8 @@ const App = () => {
     const personObject = {
       name: newName
     }
-    if (persons.includes(event.target.value)) {
+    console.log(persons)
+    if (!persons.some(e => e.name === newName)) {
       setPersons(persons.concat(personObject))
       setNewName('')
     } else {
